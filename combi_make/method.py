@@ -36,6 +36,7 @@ def choice(main_num, sub_num, soup_num, judge):
         combi[0]['主菜'] = main[main_num]['recipeTitle']
         combi[0]['副菜'] = main[sub_num]['recipeTitle']
         combi[0]['汁物'] = main[soup_num]['recipeTitle']
+        combi[0]['主菜ID'] = main[main_num]['recipeID']
 
         for material in all_list:
             if material in main[main_num]['recipeMaterial']:
