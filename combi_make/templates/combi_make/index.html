@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='ja'>
+    <head>
+        <meta chareset='utf-8'>
+        <title>献立の組み合わせ判定</title>
+        <link rel='stylesheet'
+        href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
+        crossorigin='anonymous'>
+        <link rel='stylesheet' type='text/css'
+            href='{% static 'combi_make/css/style.css' %}'>
+    </head>
+    <body class='container'>
+        <div>
+            <h1 class='display-5 text-priary mb-3'>献立の組み合わせ判定</h1>
+            <h4 class='display-6 mb-4'>主菜、副菜、汁物の組み合わせが良ければOKボタンを押してください</h4>
+        </div>
+        
+        <div class='justify-content-between'>
+            <img class='image rounded' src='{{ main_image }}' alt="主菜", width='200', height='200'>
+            <img class='imgae rounded' src='{{ sub_image }}' alt="副菜", width='200', height='200'>
+            <img class='imgae rounded' src='{{ soup_image }}' alt="汁物", width='200', height='200'>
+        </div>
+        <div>
+            <p class='h3 m-2'>主菜</p>
+            <h3 class='m-2'>{{main_name}}</h3>
+            <p class='h3 m-2'>副菜</p>
+            <h3 class='m-2'>{{sub_name}}</h3>
+            <p class='h3 m-2'>汁物</p>
+            <h3 class='m-2'>{{soup_name}}</h3>
+        </div>
+
+        <div class='button'>
+            <form action='{% url 'ok' %}' method='post'>
+                {% csrf_token %}
+                <input type='hidden' name='main_num' value='{{main_num}}'>
+                <input type='hidden' name='sub_num' value='{{sub_num}}'>
+                <input type='hidden' name='soup_num' value='{{soup_num}}'>
+                <button type="submit" class="btn btn-success">OK</button>
+            </form>
+            <form action='{% url 'no' %}' method='post'>
+                {% csrf_token %}
+                <input type='hidden' name='main_num' value='{{main_num}}'>
+                <input type='hidden' name='sub_num' value='{{sub_num}}'>
+                <input type='hidden' name='soup_num' value='{{soup_num}}'>
+                <button type="submit" class="btn btn-warning">NO</button>
+            </form>
+        </div>
+
+        <form action='{% url 'download' %}' method='get'>
+            {% csrf_token %}
+            <button type="submit" class="download btn-secondary">CSVファイル ダウンロード</button>
+        </form>
+
+    </body>
+</html>
