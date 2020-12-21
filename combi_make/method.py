@@ -34,16 +34,16 @@ def choice(main_num, sub_num, soup_num, judge):
         all_list = list(combi[0].keys())[7:]
 
         combi[0]['主菜'] = main[main_num]['recipeTitle']
-        combi[0]['副菜'] = main[sub_num]['recipeTitle']
-        combi[0]['汁物'] = main[soup_num]['recipeTitle']
-        combi[0]['主菜ID'] = main[main_num]['recipeID']
+        combi[0]['副菜'] = sub[sub_num]['recipeTitle']
+        combi[0]['汁物'] = soup[soup_num]['recipeTitle']
+        combi[0]['主菜ID'] = main[main_num]['recipeId']
 
         for material in all_list:
             if material in main[main_num]['recipeMaterial']:
                 combi[0][material] = int(combi[0][material]) + 1
-            if material in main[sub_num]['recipeMaterial']:
+            if material in sub[sub_num]['recipeMaterial']:
                 combi[0][material] = int(combi[0][material]) + 1
-            if material in main[soup_num]['recipeMaterial']:
+            if material in soup[soup_num]['recipeMaterial']:
                 combi[0][material] = int(combi[0][material]) + 1
         if judge:
             combi[0]['採用/不採用'] = 1.0  
