@@ -45,6 +45,11 @@ def choice(main_num, sub_num, soup_num, judge):
                 combi[0][material] = int(combi[0][material]) + 1
             if material in soup[soup_num]['recipeMaterial']:
                 combi[0][material] = int(combi[0][material]) + 1
+
+        combi[0]['main_genre'] = main[main_num]['genre']
+        combi[0]['sub_genre'] = sub[sub_num]['genre']
+        combi[0]['soup_genre'] = soup[soup_num]['genre']
+
         if judge:
             combi[0]['採用/不採用'] = 1.0  
 
