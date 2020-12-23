@@ -61,7 +61,8 @@ def choice(main_num, sub_num, soup_num, judge):
 
         reader = csv.reader(f)
         train = [row for row in reader]
-        combi[0]['ID'] = float(train[-1][1]) + 1
+        if len(train) != 1:
+            combi[0]['ID'] = float(train[-1][1]) + 1
         writer = csv.writer(f, lineterminator='\n')
         writer.writerow(combi[0].values()) 
         f.flush()
