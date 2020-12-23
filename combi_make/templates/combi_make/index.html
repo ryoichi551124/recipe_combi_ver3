@@ -19,7 +19,9 @@
         <div class='justify-content-between'>
             <img class='image rounded' src='{{ main_image }}' alt="主菜", width='200', height='200'>
             <img class='imgae rounded' src='{{ sub_image }}' alt="副菜", width='200', height='200'>
+            {% if soup_image %}
             <img class='imgae rounded' src='{{ soup_image }}' alt="汁物", width='200', height='200'>
+            {% endif %}
         </div>
         <div>
             <p class='h3 m-2'>主菜</p>

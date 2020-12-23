@@ -17,6 +17,8 @@ with open('rakuten_soup.csv') as f:
     reader = csv.DictReader(f)
     soup = [row for row in reader]
 
+not_soup_list = ['鍋', 'ラーメン', 'うどん', 'そば']
+
 
 #OKかNOを判定してtrain.csvに組み合わせデータを追加する処理              
 def choice(main_num, sub_num, soup_num, judge):
@@ -75,7 +77,12 @@ def choice(main_num, sub_num, soup_num, judge):
 def random_get():
     main_num = random.randint(0, len(main))
     sub_num = random.randint(0, len(sub))
-    soup_num = random.randint(0, len(soup))
+    soup_num = random.randint(0, len(soup)-1)
+
+    for not_soup in not_soup_list:
+        if not_soup in main[main_num]['recipeTitle']:
+            soup_num = 262
+            print(soup[soup_num]['recipeTitle'])
 
     recipe = {
         'main_image': main[main_num]['mediumImageUrl'],
