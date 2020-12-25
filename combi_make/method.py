@@ -17,7 +17,7 @@ with open('rakuten_soup.csv') as f:
     reader = csv.DictReader(f)
     soup = [row for row in reader]
 
-not_soup_list = ['鍋', 'ラーメン', 'うどん', 'そば']
+not_soup_list = ['鍋', 'ラーメン', 'うどん', '蕎麦']
 
 
 #OKかNOを判定してtrain.csvに組み合わせデータを追加する処理              
